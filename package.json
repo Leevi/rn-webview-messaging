@@ -1,6 +1,6 @@
 {
   "name": "rn-webview-messaging",
-  "version": "0.1.3",
+  "version": "0.2.1",
   "description": "A headless layer to support message data of JSON object",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Leevi/rn-webview-messaging.git"
+    "url": "git+https://github.com/NirlStudio/rn-webview-messaging.git"
   },
   "keywords": [
     "react-native",
@@ -19,9 +19,9 @@
   "author": "Leevi Li",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/Leevi/rn-webview-messaging/issues"
+    "url": "https://github.com/NirlStudio/rn-webview-messaging/issues"
   },
-  "homepage": "https://github.com/Leevi/rn-webview-messaging#readme",
+  "homepage": "https://github.com/NirlStudio/rn-webview-messaging#readme",
   "devDependencies": {
     "mocha": "^3.5.3"
   },

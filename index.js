@@ -1,35 +1,44 @@
-'use strict'
-
 import React, { Component } from 'react'
 import { WebView as NativeWebView } from 'react-native'
 
 const ProtocolJSON = 'x-json-msg:'
 
+const middlewares = [(webView) => (event) => {
+  if (webView.props.onMessage) {
+    webView.props.onMessage(event)
+  }
+}]
+
 export class WebView extends Component {
   _mountWebView (webView) {
     this.webView = webView
+    this._onMessage = middlewares[0](this)
+    for (var i = 1; i < middlewares.length; i++) {
+      this._onMessage = middlewares[i](this, this._onMessage)
+    }
   }
 
   _parseMessage (event) {
-    if (this.props.onMessage) {
-      var data = event.nativeEvent.data
-      if (data.startsWith(ProtocolJSON)) {
-        data = JSON.parse(data.substring(ProtocolJSON.length))
-      }
-      event.data = data
-      this.props.onMessage(event)
+    var data = event.nativeEvent.data
+    if (data.startsWith(ProtocolJSON)) {
+      data = JSON.parse(data.substring(ProtocolJSON.length))
     }
+    this._onMessage({data})
   }
 
   render () {
     return (
       <NativeWebView {...this.props}
-        ref={this._mountWebView}
-        onMessage={this._parseMessage} />
+        ref={this._mountWebView.bind(this)}
+        onMessage={this._parseMessage.bind(this)} />
     )
   }
 
   postMessage (message) {
-    this.webView.postMessage(ProtocolJSON + JSON.stringigy(message))
+    this.webView.postMessage(ProtocolJSON + JSON.stringify(message))
   }
+}
+
+export function registerMiddleware (middleware) {
+  middlewares.splice(1, 0, middleware)
 }
