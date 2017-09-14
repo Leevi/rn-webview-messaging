@@ -1,7 +1,7 @@
 {
   "name": "rn-webview-messaging",
-  "version": "0.0.1",
-  "description": "A messaging module dedicated for the communication between RN and WebView Edit",
+  "version": "0.1.1",
+  "description": "A headless layer to support message data of JSON object",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -13,7 +13,8 @@
   "keywords": [
     "react-native",
     "webview",
-    "messaging"
+    "messaging",
+    "json"
   ],
   "author": "Leevi Li",
   "license": "BSD-2-Clause",
@@ -25,6 +26,7 @@
     "mocha": "^3.5.3"
   },
   "dependencies": {
+    "react": "^15.6.1",
     "react-native": "^0.48.3"
   }
 }

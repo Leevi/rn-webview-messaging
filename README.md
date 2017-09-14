@@ -1,2 +1,2 @@
 # rn-webview-messaging
-A messaging module dedicated for the communication between RN and WebView
+A headless layer to support message data of JSON object
