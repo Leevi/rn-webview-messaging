@@ -10,12 +10,14 @@ export class WebView extends Component {
     this.webView = webView
   }
 
-  _parseMessage ({data}) {
+  _parseMessage (event) {
     if (this.props.onMessage) {
+      var data = event.nativeEvent.data
       if (data.startsWith(ProtocolJSON)) {
         data = JSON.parse(data.substring(ProtocolJSON.length))
       }
-      this.props.onMessage({data})
+      event.data = data
+      this.props.onMessage(event)
     }
   }
 
