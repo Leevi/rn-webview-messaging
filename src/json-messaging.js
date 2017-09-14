@@ -26,4 +26,7 @@
       listeners.splice(index, 1)
     }
   }
+  window.postJsonMessage = function (message) {
+    window.postMessage(ProtocolJSON + JSON.stringigy(message))
+  }
 })(window, document)

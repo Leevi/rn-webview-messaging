@@ -1,6 +1,6 @@
 {
   "name": "rn-webview-messaging",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A headless layer to support message data of JSON object",
   "main": "index.js",
   "scripts": {
