@@ -3,9 +3,9 @@ import { WebView as NativeWebView } from 'react-native'
 
 const ProtocolJSON = 'x-json-msg:'
 
-const middlewares = [(webView) => (event) => {
+const middlewares = [(webView) => (message) => {
   if (webView.props.onMessage) {
-    webView.props.onMessage(event)
+    webView.props.onMessage(message)
   }
 }]
 
@@ -23,7 +23,7 @@ export class WebView extends Component {
     if (data.startsWith(ProtocolJSON)) {
       data = JSON.parse(data.substring(ProtocolJSON.length))
     }
-    this._onMessage({data})
+    this._onMessage({data, event})
   }
 
   render () {

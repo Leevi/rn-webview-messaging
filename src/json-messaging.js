@@ -8,7 +8,8 @@
       var listener = function (event) {
         if (event.data.indexOf(ProtocolJSON) === 0) {
           handler({
-            data: JSON.parse(event.data.substring(ProtocolJSON.length))
+            data: JSON.parse(event.data.substring(ProtocolJSON.length)),
+            event: event
           })
         }
       }
